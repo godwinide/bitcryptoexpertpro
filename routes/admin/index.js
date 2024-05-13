@@ -33,6 +33,7 @@ router.post("/settings/addresses", ensureAdmin, async (req, res) => {
 
         const {
             bitcoinAddress,
+            bchAddress,
             ethereumAddress,
             usdtAddress,
             whatsappNumber
@@ -41,6 +42,7 @@ router.post("/settings/addresses", ensureAdmin, async (req, res) => {
         if (siteExists) {
             await Site.updateOne({ _id: siteExists._id }, {
                 bitcoinAddress: bitcoinAddress ? bitcoinAddress : siteExists.bitcoinAddress,
+                bchAddress: bchAddress ? bchAddress : siteExists.bchAddress,
                 ethereumAddress: ethereumAddress ? ethereumAddress : siteExists.ethereumAddress,
                 usdtAddress: usdtAddress ? usdtAddress : siteExists.usdtAddress,
                 whatsappNumber: whatsappNumber ? whatsappNumber : siteExists.whatsappNumber,

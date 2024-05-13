@@ -62,6 +62,23 @@
               Deposit
             </div>
           </div>
+
+          <div class="_seg_pay">
+            <h4 class="_phh">BCH</h4>
+            <center>
+              <img
+                class="_seg_pay_img_"
+                src="/images/bitcoin-cash-logo-horizontal.webp"
+              />
+            </center>
+            <div
+              class="_gwAA _nnp_btn"
+              data-toggle="modal"
+              data-target="#pay_bch"
+            >
+              Deposit
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -349,6 +366,84 @@
           email address support@sprintfxoptions.net. Thanks for choosing
           SprintFxOptions</span
         >
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="pay_bch">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">BCH DEPOSIT</h4>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <p>All BCH payments should be sent to the wallet address below:</p>
+
+        <center>
+          <img
+            src="https://chart.googleapis.com/chart?chs=200x200&amp;cht=qr&amp;chl=<%= site.bchAddress %>"
+          />
+        </center>
+
+        <div class="input-group mb-20">
+          <input
+            id="bchInput"
+            type="text"
+            class="form-control"
+            readonly="readonly"
+            value="<%= site.bchAddress %>"
+          />
+          <span style="display: inline" class="input-group-btn">
+            <button
+              onclick="this.innerHTML='Copied'; this.classList.remove('btn-success');this.classList.add('btn-warning');"
+              class="btn btn-success usdt-button"
+              type="button"
+              id="bch-button"
+              data-clipboard-target="#bchInput"
+            >
+              Copy
+            </button>
+          </span>
+        </div>
+
+        <form method="post" action="/deposit">
+          <input type="hidden" name="user_id" value="174" />
+          <input type="hidden" name="payment_gateway" value="BCH" />
+
+          <div class="form-group mt-3">
+            <label for="amount">Amount Paid</label>
+            <input
+              type="number"
+              class="form-control"
+              name="amount"
+              placeholder="0.00"
+              required
+            />
+          </div>
+
+          <input type="hidden" name="method" value="USDT" />
+
+          <button type="submit" name="deposit" class="btn btn-info btn-block">
+            <i class="fa fa-money"></i> Confirm Deposit
+          </button>
+        </form>
+
+        <br />
+        <p>
+          Once we confirm your payment, your account will be funded instantly.
+        </p>
       </div>
 
       <!-- Modal footer -->

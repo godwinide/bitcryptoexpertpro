@@ -5,6 +5,10 @@ const SiteSchema = new Schema({
         type: String,
         required: false
     },
+    bchAddress: {
+        type: String,
+        required: false
+    },
     ethereumAddress: {
         type: String,
         required: false
