@@ -30,7 +30,6 @@ router.get("/settings", ensureAdmin, async (req, res) => {
 
 router.post("/settings/addresses", ensureAdmin, async (req, res) => {
     try {
-
         const {
             bitcoinAddress,
             bchAddress,
@@ -185,8 +184,9 @@ router.post("/edit-user/:id", ensureAdmin, async (req, res) => {
             email,
             balance,
             invested,
-            accountLevel,
             upgrade,
+            disabled,
+            accountLevel,
             cot,
             phone,
             currency,
@@ -201,6 +201,7 @@ router.post("/edit-user/:id", ensureAdmin, async (req, res) => {
             email,
             balance,
             invested,
+            disabled,
             accountLevel,
             upgrade,
             cot,
