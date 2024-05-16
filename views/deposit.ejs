@@ -157,11 +157,10 @@
           />
           <span style="display: inline" class="input-group-btn">
             <button
-              onclick="this.innerHTML='Copied'; this.classList.remove('btn-success');this.classList.add('btn-warning');"
               class="btn btn-success btc-button"
               type="button"
-              id="btc-button"
-              data-clipboard-target="#btcInput"
+              id="btcButton"
+              data-clipboard-target="btcInput"
             >
               Copy
             </button>
@@ -239,11 +238,10 @@
           />
           <span style="display: inline" class="input-group-btn">
             <button
-              onclick="this.innerHTML='Copied'; this.classList.remove('btn-success');this.classList.add('btn-warning');"
               class="btn btn-success eth-button"
               type="button"
-              id="eth-button"
-              data-clipboard-target="#ethInput"
+              id="ethButton"
+              data-clipboard-target="ethInput"
             >
               Copy
             </button>
@@ -324,11 +322,10 @@
           />
           <span style="display: inline" class="input-group-btn">
             <button
-              onclick="this.innerHTML='Copied'; this.classList.remove('btn-success');this.classList.add('btn-warning');"
               class="btn btn-success usdt-button"
               type="button"
-              id="usdt-button"
-              data-clipboard-target="#usdtInput"
+              id="usdtButton"
+              data-clipboard-target="usdtInput"
             >
               Copy
             </button>
@@ -407,11 +404,10 @@
           />
           <span style="display: inline" class="input-group-btn">
             <button
-              onclick="this.innerHTML='Copied'; this.classList.remove('btn-success');this.classList.add('btn-warning');"
-              class="btn btn-success usdt-button"
+              class="btn btn-success bch-button"
               type="button"
-              id="bch-button"
-              data-clipboard-target="#bchInput"
+              id="bchButton"
+              data-clipboard-target="bchInput"
             >
               Copy
             </button>
@@ -455,3 +451,29 @@
     </div>
   </div>
 </div>
+
+<script>
+  const bchButton = document.getElementById("bchButton");
+  const btcButton = document.getElementById("btcButton");
+  const ethButton = document.getElementById("ethButton");
+  const usdtButton = document.getElementById("usdtButton");
+  function copyFunc(evt) {
+    console.log("clicked");
+    evt.target.innerHTML = "Copied";
+    evt.target.classList.remove("btn-success");
+    evt.target.classList.add("btn-warning");
+
+    const textId = evt.target.getAttribute("data-clipboard-target");
+
+    // Get the text area
+    const copyText = document.getElementById(textId);
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // For mobile devices
+    document.execCommand("copy");
+  }
+
+  bchButton.addEventListener("click", copyFunc);
+  btcButton.addEventListener("click", copyFunc);
+  ethButton.addEventListener("click", copyFunc);
+  usdtButton.addEventListener("click", copyFunc);
+</script>
